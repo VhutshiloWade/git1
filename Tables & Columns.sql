@@ -1,4 +1,55 @@
-
+﻿IF NOT EXISTS (
+    SELECT * 
+    FROM sys.objects 
+    WHERE object_id = OBJECT_ID(N'[dbo].[_ccg_GL_tblApprovalRequests]') 
+    AND type in (N'U')
+)
+BEGIN
+CREATE TABLE [dbo].[_ccg_GL_tblApprovalRequests](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[iRequestID] [bigint] NOT NULL,
+	[cRequestType] [varchar](50) NOT NULL,
+	[iIncidentID] [bigint] NULL,
+	[iIncidentTypeID] [bigint] NULL,
+	[iIncidentPriorityID] [bigint] NULL,
+	[iCurrentStepID] [bigint] NULL,
+	[iCurrentStep] [int] NOT NULL,
+	[cStatus] [nvarchar](max) NULL,
+	[iCreateUser] [bigint] NOT NULL,
+	[dDateCreated] [datetime] NULL,
+	[iRequestUser] [bigint] NOT NULL,
+	[dRequestDate] [datetime] NULL,
+	[iActionUser] [bigint] NULL,
+	[dActionDate] [datetime] NULL,
+	[cRejectionReason] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo._ccg_GL_tblApprovalRequests] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+End
+GO
+/****** Object:  Table [dbo].[_ccg_GL_tblAssetClassifications]    Script Date: 19/07/2024 08:47:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (
+    SELECT * 
+    FROM sys.objects 
+    WHERE object_id = OBJECT_ID(N'[dbo].[_ccg_GL_tblAssetClassifications]') 
+    AND type in (N'U')
+)
+BEGIN
+CREATE TABLE [dbo].[_ccg_GL_tblAssetClassifications](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[cCode] [varchar](50) NULL,
+	[cDescription] [varchar](250) NULL,
+	[iCreatedBy] [bigint] NULL,
+	[dDateCreated] [datetime] NULL
+) ON [PRIMARY]
+End
+GO
 /****** Object:  Table [dbo].[_ccg_GL_tblBatchIncident]    Script Date: 19/07/2024 08:47:43 ******/
 SET ANSI_NULLS ON
 GO
